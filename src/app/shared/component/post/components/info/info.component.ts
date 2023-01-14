@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-info',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class InfoComponent {
 
+  @Input()
+  public info!: string | number
 }

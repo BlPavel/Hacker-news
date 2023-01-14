@@ -12,7 +12,7 @@ export class PostItemStateService {
 
   constructor(private readonly _postEffect: PostEffectService) {}
 
-  public get(id: number){
+  public get(id: number): Observable<IHitItem | null>{
     if(this._postItem$.value?.id === this._idPost$.value){
       return this._postItem$.asObservable()
     } else {

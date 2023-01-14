@@ -1,1 +1,14 @@
-<p>post works!</p>
+<article>
+  <div class="title">
+    <h3>{{ title }}</h3>
+    <a href="({{ linkNews }})" target="_blank"></a>
+  </div>
+  <div class="info">
+    <app-info>{{ author }}</app-info>
+    <app-info>{{ points }}</app-info>
+    <a [routerLink]="['/front/page/comments', id]" routerLinkActive="router-link-active" ></a>
+    <app-info>{{ comments }}</app-info>
+  </div>
+</article>
+
+
