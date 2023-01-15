@@ -1,7 +1,8 @@
+import { IHitItem } from './../../shared/interfaces/hit-item';
 import { PostEffectService } from './../effect/post-effect.service';
 import { IHit } from './../../shared/interfaces/hit';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, forkJoin, mergeMap, Observable, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PostStateService {
@@ -15,6 +16,10 @@ export class PostStateService {
   private _isLoadSubject$:  BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   public readonly isLoad$: Observable<boolean> = this._isLoadSubject$.asObservable()
+
+  private _postItemsSubject$: BehaviorSubject<IHitItem[]> = new BehaviorSubject<IHitItem[]>([])
+
+  public readonly postItems$: Observable<IHitItem[]> = this._postItemsSubject$.asObservable()
 
   constructor(private readonly _postEffect: PostEffectService) {
     if(this._postsSubject$.value.length === 0){
@@ -32,10 +37,27 @@ export class PostStateService {
           hits =>{
             this._postsSubject$.next(hits),
             this._pageSubject$.next(page)
-            this._isLoadSubject$.next(true)
           }
-        )
-      ).subscribe()
+        ),
+        mergeMap( posts => {
+          const result: Observable<IHitItem>[] = []
+          posts.forEach( post =>{
+            let postItem:Observable<IHitItem>
+            if(post.story_id || post.objectID){
+              const id: number = post.story_id ? post.story_id : +post.objectID
+              postItem = this._postEffect.getById(id)
+              result.push(postItem)
+            }
+          })
+          return forkJoin(result).pipe(
+            tap(postItems=>{
+              this._postItemsSubject$.next(postItems)
+              this._isLoadSubject$.next(true)
+            })
+          )
+        })
+      )
+      .subscribe()
     }
     catch(error){
       console.log(error)

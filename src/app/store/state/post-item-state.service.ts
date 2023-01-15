@@ -6,31 +6,33 @@ import { PostEffectService } from '../effect/post-effect.service';
 @Injectable({ providedIn: 'root' })
 export class PostItemStateService {
 
-  private _postItem$: BehaviorSubject<null | IHitItem> = new BehaviorSubject<null | IHitItem>(null)
+  private _postItems$: BehaviorSubject<IHitItem[]> = new BehaviorSubject<IHitItem[]>([])
 
-  public readonly post$: Observable<null | IHitItem> = this._postItem$.asObservable()
+  public readonly postItems$: Observable<IHitItem[]> = this._postItems$.asObservable()
+
+  public postItems: IHitItem[] = []
 
   constructor(private readonly _postEffect: PostEffectService) {}
 
-  public get(id: number): Observable<IHitItem | null>{
-    if(this._postItem$.value?.id === id){
-      return this._postItem$.asObservable()
-    } else {
-      this._get(id)
-      return this._postItem$.asObservable()
-    }
-  }
+  // public get(id: number): Observable<IHitItem | null>{
+  //   if(this._postItem$.value?.id === id){
+  //     return this._postItem$.asObservable()
+  //   } else {
+  //     this._get(id)
+  //     return this._postItem$.asObservable()
+  //   }
+  // }
 
-  private _get(id: number): void{
-    try{
-      this._postEffect.getById(id).pipe(
-        tap( item => {
-          this._postItem$.next(item)
-        })
-      ).subscribe()
-    }
-    catch(error){
-      console.log(error)
-    }
-  }
+  // public get(id: number): void{
+  //   try{
+  //     this._postEffect.getById(id).pipe(
+  //       tap( item => {
+  //         this._postItem$.next(item)
+  //       })
+  //     ).subscribe()
+  //   }
+  //   catch(error){
+  //     console.log(error)
+  //   }
+  // }
 }

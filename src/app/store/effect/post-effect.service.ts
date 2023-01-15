@@ -15,15 +15,13 @@ export class PostEffectService {
       shareReplay(1),
       map( response => {
         return response['hits']
-      }),
-      delay(1000)
+      })
     )
   }
 
   public getById(id: number): Observable<IHitItem>{
     return this._http.get<IHitItem>('http://hn.algolia.com/api/v1/items/' + id).pipe(
-      shareReplay(1),
-      delay(1000)
+      shareReplay(1)
     )
   }
 }

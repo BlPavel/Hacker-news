@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IChildrenHitItem } from 'src/app/shared/interfaces/children-hit-item';
 
 @Component({
   selector: 'app-post',
@@ -20,27 +21,11 @@ export class PostComponent {
     this.author = `by ${author}`
   }
 
-  public points!: string
+  @Input()
+  public points!: number | null
 
   @Input()
-  public set setPoints(points: number | null){
-    if(points === null) {
-      this.points = '0 points'
-    } else {
-      this.points = `${points} points`
-    }
-  }
-
-  public comments!: string
-
-  @Input()
-  public set setComments(comments: number | null){
-    if(comments === null) {
-      this.comments = '0 comments'
-    } else {
-      this.comments = `${comments} + comments`
-    }
-  }
+  public comments!: IChildrenHitItem[]
 
   @Input()
   public id!: number

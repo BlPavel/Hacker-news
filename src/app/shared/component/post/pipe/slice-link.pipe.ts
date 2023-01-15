@@ -1,8 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'sliceLink'
-})
+@Pipe({ name: 'sliceLink' })
 export class SliceLinkPipe implements PipeTransform {
 
   transform(link: string | null): string {

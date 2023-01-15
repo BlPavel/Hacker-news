@@ -1,3 +1,4 @@
+import { IHitItem } from './../../../../shared/interfaces/hit-item';
 import { IHit } from './../../../../shared/interfaces/hit';
 import { Observable } from 'rxjs';
 import { PostStateService } from './../../../../store/state/post-state.service';
@@ -14,11 +15,14 @@ export class PostsComponent implements OnInit {
 
   public isLoad$!: Observable<boolean>
 
+  public postItems$!: Observable<IHitItem[]>
+
   constructor(private readonly _postState: PostStateService){}
 
   ngOnInit(): void {
     this.isLoad$ = this._postState.isLoad$
     this.posts$ = this._postState.posts$
+    this.postItems$ = this._postState.postItems$
   }
 
   public previousPage(): void{
