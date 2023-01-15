@@ -8,5 +8,8 @@ import { Component, Input } from '@angular/core';
 export class InfoComponent {
 
   @Input()
-  public info!: string | number
+  public info!: string
+
+  @Input()
+  public hasBorder: boolean = true
 }

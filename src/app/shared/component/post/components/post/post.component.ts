@@ -13,31 +13,35 @@ export class PostComponent {
   @Input()
   public linkNews!: string | null
 
-  @Input()
   public author!: string
 
-  public points!: number
+  @Input()
+  public set setAuthor(author: string){
+    this.author = `by ${author}`
+  }
+
+  public points!: string
 
   @Input()
   public set setPoints(points: number | null){
     if(points === null) {
-      this.points = 0
+      this.points = '0 points'
     } else {
-      this.points = points
+      this.points = `${points} points`
     }
   }
 
-  public comments!: number | null
+  public comments!: string
 
   @Input()
   public set setComments(comments: number | null){
     if(comments === null) {
-      this.comments = 0
+      this.comments = '0 comments'
     } else {
-      this.comments = comments
+      this.comments = `${comments} + comments`
     }
   }
 
   @Input()
-  id!: number
+  public id!: number
 }

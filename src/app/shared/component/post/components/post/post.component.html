@@ -1,13 +1,14 @@
 <article>
   <div class="title">
-    <h3>{{ title }}</h3>
-    <a href="({{ linkNews }})" target="_blank"></a>
+    <span>{{ title }}</span>
+    <a *ngIf="linkNews" href="{{ linkNews }}" target="_blank">({{ linkNews | sliceLink }})</a>
   </div>
   <div class="info">
-    <app-info>{{ author }}</app-info>
-    <app-info>{{ points }}</app-info>
-    <a [routerLink]="['/front/page/comments', id]" routerLinkActive="router-link-active" ></a>
-    <app-info>{{ comments }}</app-info>
+    <app-info [info]="author" class="border"></app-info>
+    <app-info [info]="points" class="border"></app-info>
+    <a [routerLink]="['/front/page/comments', id]" routerLinkActive="router-link-active">
+      <app-info [info]="comments"></app-info>
+    </a>
   </div>
 </article>
 
