@@ -2,12 +2,13 @@ import { IHitItem } from './../../../../shared/interfaces/hit-item';
 import { IHit } from './../../../../shared/interfaces/hit';
 import { Observable } from 'rxjs';
 import { PostStateService } from './../../../../store/state/post-state.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostsComponent implements OnInit {
 
