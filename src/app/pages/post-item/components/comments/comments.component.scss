@@ -22,3 +22,13 @@
   display: none;
 }
 
+.flex{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  .author{
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+}
