@@ -15,12 +15,8 @@ export class PostComponent {
   @Input()
   public linkNews!: string | null
 
-  public author!: string
-
   @Input()
-  public set setAuthor(author: string){
-    this.author = `by ${author}`
-  }
+  public author!: string
 
   @Input()
   public points!: number | null

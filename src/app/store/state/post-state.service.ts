@@ -23,11 +23,11 @@ export class PostStateService {
 
   constructor(private readonly _postEffect: PostEffectService) {
     if(this._postsSubject$.value.length === 0){
-      this.changePage(0)
+      this.getByPage(0)
     }
   }
 
-  public changePage(nextPage: number): void{
+  public getByPage(nextPage: number): void{
     const page: number = this._pageSubject$.value + nextPage
     try{
       if(page === 0) return

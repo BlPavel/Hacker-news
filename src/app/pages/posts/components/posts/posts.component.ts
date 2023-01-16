@@ -22,15 +22,13 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoad$ = this._postState.isLoad$
+
     this.posts$ = this._postState.posts$
+
     this.postItems$ = this._postState.postItems$
   }
 
-  public previousPage(): void{
-    this._postState.changePage(-1)
-  }
-
-  public nextPage(): void{
-    this._postState.changePage(1)
+  public changePage(nextPage: number){
+    this._postState.getByPage(nextPage)
   }
 }

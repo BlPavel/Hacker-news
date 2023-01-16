@@ -4,9 +4,9 @@
     <a *ngIf="linkNews" href="{{ linkNews }}" target="_blank">({{ linkNews | sliceLink }})</a>
   </div>
   <div class="info">
-    <app-info [info]="author" class="border"></app-info>
+    <app-info [info]="author | setAuthor" class="border"></app-info>
     <app-info [info]="points | setPoints" class="border"></app-info>
-    <a [routerLink]="['/front/page/comments', id]" routerLinkActive="router-link-active">
+    <a [routerLink]="['/comments', id]" routerLinkActive="router-link-active">
       <app-info [info]="comments | setComments"></app-info>
     </a>
   </div>
