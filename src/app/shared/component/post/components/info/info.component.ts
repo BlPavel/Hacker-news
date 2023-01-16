@@ -10,7 +10,4 @@ export class InfoComponent {
 
   @Input()
   public info!: string
-
-  @Input()
-  public hasBorder: boolean = true
 }
