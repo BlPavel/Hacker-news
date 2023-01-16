@@ -1,1 +1,25 @@
-<p>comments works!</p>
+<mat-tree
+[dataSource]="nestedDataSource"
+[treeControl]="nestedTreeControl"
+class="tree mat-elevation-z4"
+>
+
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <span [innerHTML]="node.text" *ngIf="node.text"></span>
+  </mat-tree-node>
+
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+    <div class="mat-tree-node">
+      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+        <mat-icon>
+          {{ nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+        </mat-icon>
+      </button>
+      <span [innerHTML]="node.text" *ngIf="node.text"></span>
+    </div>
+    <div class="nested-node" [class.tree-invisable]="!nestedTreeControl.isExpanded(node)">
+      <ng-container matTreeNodeOutlet></ng-container>
+    </div>
+  </mat-nested-tree-node>
+
+</mat-tree>

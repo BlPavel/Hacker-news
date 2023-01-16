@@ -9,6 +9,8 @@ import { PostModule } from 'src/app/shared/component/post/post.module';
 
 import {MatButtonModule} from '@angular/material/button'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatIconModule} from '@angular/material/icon'
 
 
 
@@ -19,7 +21,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     PostModule,
     MatButtonModule,
     RouterModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTreeModule,
+    MatIconModule
   ]
 })
 export class PostItemModule { }

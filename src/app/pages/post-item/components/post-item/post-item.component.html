@@ -4,6 +4,7 @@
     <ng-container *ngIf="posts$ | async as posts; else spiner">
       <ng-container *ngIf="postItems$ | async as postItems; else spiner">
         <div class="content">
+
           <app-post
           *ngIf="posts[0].story_title"
           [title]="posts[0].story_title"
@@ -13,6 +14,10 @@
           [comments] ="postItems[0].children"
           [id]="id"
           ></app-post>
+
+          <app-comments [comments]="postItems[0].children">
+          </app-comments>
+
         </div>
       </ng-container>
     </ng-container>

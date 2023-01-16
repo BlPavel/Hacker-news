@@ -1,0 +1,24 @@
+.tree{
+  ul{
+    margin-top: 0;
+    margin-bottom: 0;
+    li{
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.nested-node{
+  padding-left: 80px;
+}
+
+.mat-tree-node{
+  margin-left: 40px;
+  margin-top: 1.5rem;
+}
+
+.tree-invisable{
+  display: none;
+}
+
