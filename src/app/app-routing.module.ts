@@ -6,6 +6,7 @@ import { PostItemComponent } from './pages/post-item/components/post-item/post-i
 const routes: Routes = [
   { path: 'front_page', component: PostsComponent },
   { path: '', redirectTo: '/front_page', pathMatch: 'full' },
+  { path: 'comments', loadChildren: ()=> import('./pages/post-item/post-item.module').then(m=> m.PostItemModule) },
   { path: 'comments/:id', component: PostItemComponent }
 ];
 

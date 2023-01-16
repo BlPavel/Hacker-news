@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PostsModule } from './pages/posts/posts.module';
-import { PostItemModule } from './pages/post-item/post-item.module';
 
 
 @NgModule({
@@ -18,7 +17,6 @@ import { PostItemModule } from './pages/post-item/post-item.module';
     BrowserAnimationsModule,
     HttpClientModule,
     PostsModule,
-    PostItemModule
   ],
   providers: [],
   bootstrap: [AppComponent]
